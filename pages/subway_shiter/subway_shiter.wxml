@@ -1,0 +1,52 @@
+<!--pages/subway_shiter.wxml-->
+<view class="page_container">
+  <!-- 地理位置推荐信息 -->
+  <view class="pos_recommend_wc_info">
+    <view wx:if="{{ location_permission === false }}">未开启地理位置权限，无法自动推荐附近站点洗手间，请手动选择站点</view>
+    <view wx:elif="{{ location_permission === null }}">正在搜索附近站点，如紧急可手动选择</view>
+    <view wx:elif="{{ has_get_location_info && nearby_stations.length > 0 }}">
+      <view>当前：纬度{{ position.latitude }}，经度{{ position.longitude }} <button class="refresh_pos_btn" bind:tap="searchNearByStationWcInfo">刷新</button> </view>
+      <view>附近站点的洗手间有：</view>
+      <view wx:for="{{ nearby_stations }}" wx:key="station_name" class="nearby_station_wc_info">
+        <span class="station_name">{{ item.station_name }}(约{{ item.distance }}米)：</span><span class="wc_info">{{ item.wc_info }}</span>
+      </view>
+    </view>
+  </view>
+
+  <!-- 地铁线路信息 -->
+  <view>
+    <picker-view indicator-style="height: 50px;" class="picker-view-container" value="{{selected_indexes}}" bindchange="bindChange">
+      <picker-view-column class="picker-align-center">
+        <view wx:for="{{ lines }}" wx:key="index" class="picker-align-center">
+          <span class="line_name" style="background-color: {{ item.color }};">{{ item.name }}</span>
+        </view>
+      </picker-view-column>
+      <picker-view-column class="picker-align-center">
+        <view wx:for="{{ line_stations }}" wx:key="item" class="picker-align-center">
+          <span class="station_name">{{ item }}</span>
+        </view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{ wc_info_list }}" wx:key="index" class="picker-wcinfo">
+          <span class="wc_info">{{ item }}</span>
+        </view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+
+  <!-- 页面底部信息 -->
+  <view class="footer_info">
+    <view>
+      <button bind:tap="onOpenFeedback" class="feedback_button">吐槽/反馈/蹲坑打卡</button>
+    </view>
+
+    <view class="disclaimer_text">
+      当前仅支持【深圳】，其他城市有需求可以点上边反馈给我们～
+    </view>
+
+    <view class="disclaimer_text">
+      免责声明：本小程序的信息不定期从官网查询更新，无法保证是最新的，也无法保证数据的准确性。（数据更新日期：2024-01-10）
+    </view>
+  </view>
+
+</view>

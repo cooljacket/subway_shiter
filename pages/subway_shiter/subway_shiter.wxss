@@ -1,0 +1,80 @@
+/* pages/subway_shiter.wxss */
+.page_container {
+  height: 94vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pos_recommend_wc_info {
+  margin-top: 10px;
+}
+
+.refresh_pos_btn {
+  display: inline;
+  color: white;
+  background-color: #87CEFA;
+  font-size: 14px;
+}
+
+.footer_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.feedback_button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(23, 207, 47);
+  color: black;
+  font-weight: normal;
+  font-size: 16px;
+  border-radius: 50%;
+  box-shadow: 0 5px 5px #b8cc00;
+}
+
+.disclaimer_text {
+  margin-bottom: 10px;
+  opacity: 50%;
+  font-size: 13px;
+}
+
+.nearby_station_wc_info {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.picker-view-container {
+  width: 100vw;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+}
+
+.picker-align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  flex-basis: 25vw;
+}
+
+.picker-wcinfo {
+  margin-left: 5vw;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-overflow: ellipsis;
+}
+
+.line_name {
+  color: white;
+  font-weight: 700;
+}
+
+.wc_info {
+    background-color: yellow;
+}
